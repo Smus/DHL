@@ -11,23 +11,23 @@
 
 .wrapper {
 		clear: both;
-		max-width: 600px;
+		max-width: 400px;
 		margin: 200px auto;
 }
 
 .col1 {
 		float: left;
-		width: 180px;
+		width: 85px;
 		height: 30px;
 		line-height: 30px;
 		text-align: right;
 		vertical-align: middle;
-		padding-right: 20px
+		padding-right:15px;
 }
 
 .col2 {
 		float: left;
-		width: 200px;
+		width: 150px;
 		height: 30px;
 		text-align: center;
 		vertical-align: middle;
@@ -35,7 +35,7 @@
 
 .col3 {
 		float: left;
-		width: 200px;
+		width: 150px;
 		height: 30px;
 		text-align: center;
 		vertical-align: middle;
@@ -65,109 +65,109 @@ input[type="text"] {
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
 
-//myDate.setMinutes(myDate.getMinutes() + 80);
-//timeObject.setTime(timeObject.getTime() + 1000 * 60);
+// Attributes
+var 
+start_hour = 18,
+start_min = 00,
+teamStartDate,
+teamStartTime,
+DHLStartDate = new Date(2013, 09, 24, start_hour, start_min),
+Runner1StartTime = new Date(),
+Runner1TrackTime,
+Runner2StartTime = new Date(),
+Runner2TrackTime,
+Runner3StartTime = new Date(),
+Runner3TrackTime,
+Runner4StartTime = new Date(),
+Runner4TrackTime,
+Runner5StartTime = new Date(),
+Runner5TrackTime,
+slut,
+startNummer = 0,
+slutNummer = 0;
 
-var start_hour = 18;
-var start_min = 00;
-var teamStartDate;
-var teamStartTime
-var DHLStartDate = new Date(2013, 09, 24, start_hour, start_min)
-var Runner1StartTime = new Date();
-var Runner1TrackTime;
-var Runner2StartTime = new Date();
-var Runner2TrackTime;
-var Runner3StartTime = new Date();
-var Runner3TrackTime;
-var Runner4StartTime = new Date();
-var Runner4TrackTime;
-var Runner5StartTime = new Date();
-var Runner5TrackTime;
-var slut;
+// Functions
 
-function pad2(number) {
-   
-     return (number < 10 ? '0' : '') + number
-   
+function start() {
+    resetTime();
+    calcTeamStart();
+    calcRunner1Start();
+    calcRunner2Start();
+    calcRunner3Start();
+    calcRunner4Start();
+    calcRunner5Start();
+    sluttid();
 }
-function start(){
-	$("#starthour").append(DHLStartDate.getHours());	
-	$("#startmin").append(DHLStartDate.getMinutes());
-	calcTeamStart();
-	calcRunner1Start();
-	calcRunner2Start();
-	calcRunner3Start();
-	calcRunner4Start();
-	calcRunner5Start();
-	Sluttid();
-	}
-/*function removeBtn(){
-	$('#submit').hide();
-	}*/
-	var startNummer = 0;
-	var slutNummer = 250;	
-function calcTeamStart(){
-	//Get
-	var teamNr = $('#teamNr').val();
-	//Set
-	$('#teamStart').val(DHLStartDate.getHours() + ":" + pad2(DHLStartDate.getMinutes()));
-		teamStartTime = DHLStartDate;
-		
-	for(var i = 1; i <= 20; i++)
-	{
-		 if(startNummer < teamNr && teamNr < slutNummer) 		 
-		 {
-					teamStartTime = new Date(2013, 09, 24, start_hour, start_min+i);
-					$('#teamStart').val(teamStartTime.getHours() + ":" + pad2(teamStartTime.getMinutes()));					
-		 }
-		startNummer = startNummer + 250;	
-		slutNummer = slutNummer + 250;
-	}
-	return teamStartTime;
+
+function pad2(number) { //Puts a 0 infrom of the time if its only one digit   
+    return (number < 10 ? '0' : '') + number
 }
 
 
+function resetTime() {
+startNummer = 0,
+slutNummer = 250;
+}
 
-function calcRunner1Start(){	
-	$('#l1start').val(teamStartTime.getHours() + ":" + pad2(teamStartTime.getMinutes()));
-	}
-function calcRunner2Start(){	
-	Runner1TrackTime = $('#l1').val() * 1000 * 60;
-	Runner1StartTime.setTime(teamStartTime.getTime() + Runner1TrackTime);
-	$('#l2start').val(Runner1StartTime.getHours() + ":" + pad2(Runner1StartTime.getMinutes()));
-	
-	return Runner1StartTime,Runner1TrackTime;	
-	}
-function calcRunner3Start(){	
-	Runner2TrackTime = $('#l2').val() * 1000 * 60;
-	Runner2StartTime.setTime(Runner1StartTime.getTime() + Runner2TrackTime);
-	$('#l3start').val(Runner2StartTime.getHours() + ":" + pad2(Runner2StartTime.getMinutes()));
-	
-	return Runner2StartTime,Runner2TrackTime;
-	}
-	
-function calcRunner4Start(){	
-	Runner3TrackTime = $('#l3').val() * 1000 * 60;
-	Runner3StartTime.setTime(Runner2StartTime.getTime() + Runner3TrackTime);
-	$('#l4start').val(Runner3StartTime.getHours() + ":" + pad2(Runner3StartTime.getMinutes()));
-	
-	return Runner3StartTime,Runner3TrackTime;
-	}
-	
-function calcRunner5Start(){	
-	Runner4TrackTime = $('#l4').val() * 1000 * 60;
-	Runner4StartTime.setTime(Runner3StartTime.getTime() + Runner4TrackTime);
-	$('#l5start').val(Runner4StartTime.getHours() + ":" + pad2(Runner4StartTime.getMinutes()));
-	
-	return Runner4StartTime,Runner4TrackTime;
-	}
-function Sluttid(){	
-	Runner5TrackTime = $('#l5').val() * 1000 * 60;
-	Runner5StartTime.setTime(Runner4StartTime.getTime() + Runner5TrackTime);
-	$('#sluttid').val(Runner5StartTime.getHours() + ":" + pad2(Runner5StartTime.getMinutes()));
-	
-	return Runner5StartTime,Runner5TrackTime;
-	}
+function calcTeamStart() {
+    var teamNr = $('#teamNr').val();
+    $('#teamStart').val(DHLStartDate.getHours() + ":" + pad2(DHLStartDate.getMinutes()));
+    teamStartTime = DHLStartDate;
+    for (var i = 1; i <= 20; i++) {
+        if (startNummer < teamNr && teamNr < slutNummer) {
+            teamStartTime = new Date(2013, 09, 24, start_hour, start_min + i);
+            $('#teamStart').val(teamStartTime.getHours() + ":" + pad2(teamStartTime.getMinutes()));
+        }
+        startNummer = startNummer + 250;
+        slutNummer = slutNummer + 250;
+    }
+    return teamStartTime;
+}
+
+
+function calcRunner1Start() {
+    $('#l1start').val(teamStartTime.getHours() + ":" + pad2(teamStartTime.getMinutes()));
+}
+
+function calcRunner2Start() {
+    Runner1TrackTime = $('#l1').val() * 1000 * 60;
+    Runner1StartTime.setTime(teamStartTime.getTime() + Runner1TrackTime);
+    $('#l2start').val(Runner1StartTime.getHours() + ":" + pad2(Runner1StartTime.getMinutes()));
+
+    return Runner1StartTime, Runner1TrackTime;
+}
+
+function calcRunner3Start() {
+    Runner2TrackTime = $('#l2').val() * 1000 * 60;
+    Runner2StartTime.setTime(Runner1StartTime.getTime() + Runner2TrackTime);
+    $('#l3start').val(Runner2StartTime.getHours() + ":" + pad2(Runner2StartTime.getMinutes()));
+
+    return Runner2StartTime, Runner2TrackTime;
+}
+
+function calcRunner4Start() {
+    Runner3TrackTime = $('#l3').val() * 1000 * 60;
+    Runner3StartTime.setTime(Runner2StartTime.getTime() + Runner3TrackTime);
+    $('#l4start').val(Runner3StartTime.getHours() + ":" + pad2(Runner3StartTime.getMinutes()));
+
+    return Runner3StartTime, Runner3TrackTime;
+}
+
+function calcRunner5Start() {
+    Runner4TrackTime = $('#l4').val() * 1000 * 60;
+    Runner4StartTime.setTime(Runner3StartTime.getTime() + Runner4TrackTime);
+    $('#l5start').val(Runner4StartTime.getHours() + ":" + pad2(Runner4StartTime.getMinutes()));
+
+    return Runner4StartTime, Runner4TrackTime;
+}
+
+function sluttid() {
+    Runner5TrackTime = $('#l5').val() * 1000 * 60;
+    Runner5StartTime.setTime(Runner4StartTime.getTime() + Runner5TrackTime);
+    $('#sluttid').val(Runner5StartTime.getHours() + ":" + pad2(Runner5StartTime.getMinutes()));
+
+    return Runner5StartTime, Runner5TrackTime;
+}
 </script>
 </head>
 <body>
