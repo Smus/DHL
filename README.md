@@ -1,4 +1,4 @@
 DHLtime
 =======
 
-Runner Start Time app for DHL
+Little program to find the start time for each runner in DHL in denmark
