@@ -9,6 +9,21 @@
 		font-size: 12px
 }
 
+@media screen and (max-width: 420px)
+{
+	
+	.wrapper { width:80% !important; margin:10px auto 90px auto !important; padding-bottom: 15px !important}
+	.col1{ width:100% !important; clear:left; text-align:center !important}
+	.col2{ width:100% !important; clear:left; text-align:center !important}
+	.col3{ width:100% !important; clear:left; height:30px !important}
+	#submit{ width:95% !important; height:44px !important}
+	.mobileHide{ display:none !important}
+	}
+.resultat{
+		background-color:#E2E2E2;
+		border:1px #ccc solid;
+		color:#000;
+		}
 .wrapper {
 		clear: both;
 		max-width: 400px;
@@ -61,7 +76,11 @@ input[type="text"] {
 }
 
 .row { clear: both }
+
+
+
 </style>
+
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
 
@@ -171,6 +190,8 @@ function sluttid() {
 </script>
 </head>
 <body>
+
+
 <div class="wrapper">
   <div class="row">
     <div class="col1">Hold nr</div>
@@ -178,7 +199,7 @@ function sluttid() {
       <input type="text" name="teamNr" id="teamNr" value="0" />
     </div>
     <div class="col3">
-      <input type="text" name="l1a" id="teamStart" disabled="disabled" />
+      <input type="text" name="l1a" id="teamStart" class="resultat" disabled="disabled" />
     </div>
   </div>
   <div class="row">
@@ -187,7 +208,7 @@ function sluttid() {
       <input type="text" name="l1" id="l1" value="0" />
     </div>
     <div class="col3">
-      <input type="text" name="l1a" id="l1start" disabled="disabled" />
+      <input type="text" name="l1a" id="l1start" class="resultat" disabled="disabled" />
     </div>
   </div>
   <div class="row">
@@ -196,7 +217,7 @@ function sluttid() {
       <input type="text" name="l1" id="l2" value="0" />
     </div>
     <div class="col3">
-      <input type="text" name="l1a" id="l2start" disabled="disabled" />
+      <input type="text" name="l1a" id="l2start" class="resultat" disabled="disabled" />
     </div>
   </div>
   <div class="row">
@@ -205,7 +226,7 @@ function sluttid() {
       <input type="text" name="l1" id="l3" value="0" />
     </div>
     <div class="col3">
-      <input type="text" name="l1a" id="l3start" disabled="disabled" />
+      <input type="text" name="l1a" id="l3start" class="resultat" disabled="disabled" />
     </div>
   </div>
   <div class="row">
@@ -214,7 +235,7 @@ function sluttid() {
       <input type="text" name="l1" id="l4" value="0" />
     </div>
     <div class="col3">
-      <input type="text" name="l1a" id="l4start" disabled="disabled" />
+      <input type="text" name="l1a" id="l4start" class="resultat" disabled="disabled" />
     </div>
   </div>
   <div class="row">
@@ -223,20 +244,20 @@ function sluttid() {
       <input type="text" name="l1" id="l5" value="0" />
     </div>
     <div class="col3">
-      <input type="text" name="l1a" id="l5start" disabled="disabled" />
+      <input type="text" name="l1a" id="l5start" class="resultat" disabled="disabled" />
     </div>
   </div>
   <div class="row">
     <div class="col1">Slut tid</div>
-    <div class="col2"></div>
+    <div class="col2 mobileHide"></div>
     <div class="col3">
-      <input type="text" name="l1a" id="sluttid" disabled="disabled" />
+      <input type="text" name="l1a" id="sluttid" class="resultat" disabled="disabled" />
     </div>
   </div>
   <div class="row">
     <div class="col1"></div>
-    <div class="col2"></div>
-    <div class="col3">
+    <div class="col2 mobileHide"></div>
+    <div class="col3 btn">
       <input type="button" onclick="start()" id="submit" value="submit" />
     </div>
   </div>
